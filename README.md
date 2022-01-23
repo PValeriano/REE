@@ -9,7 +9,8 @@ instancia = REE()
 precios = instancia.get_PVPC()
 fecha_llamada = instancia.date.strftime('%d-%m-%y')
 
-precios_hora = [[datetime.strptime(d.get("datetime"),"%Y-%m-%dT%H:%M:%S.%f%z").strftime("%H:%M"),f"{d.get('value')} €/KwH"] for d in precios]
+precios_hora = [[datetime.strptime(d.get("datetime"),
+                 "%Y-%m-%dT%H:%M:%S.%f%z").strftime("%H:%M"),f"{d.get('value')} €/KwH"] for d in precios]
 
 print(f'Los precios del día {fecha_llamada} son: \n {precios_hora}')
 ```
