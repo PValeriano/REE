@@ -1,5 +1,5 @@
 # REE
-## Iinicio rápido
+## Inicio rápido
 ```
 from ree import REE
 from datetime import datetime
