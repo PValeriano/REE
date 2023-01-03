@@ -1,25 +1,8 @@
-# REE Module
-## Inicio rápido
-```
-from ree import REE
-from datetime import datetime
+# Pruebas de integración de git con GitHub
 
-instancia = REE()
+Este proyecto es, primero de todo, pruebas de uso de git local y con GitHub.
+Si acaso también es un notificador del precio de la luz en españa, pero el tratamiento de datos necesita mejorar...
 
-precios = instancia.get_PVPC()
-fecha_llamada = instancia.date.strftime('%d-%m-%y')
-
-precios_hora = [[datetime.strptime(d.get("datetime"),
-                 "%Y-%m-%dT%H:%M:%S.%f%z").strftime("%H:%M"),f"{d.get('value')} €/KwH"] for d in precios]
-
-print(f'Los precios del día {fecha_llamada} son: \n {precios_hora}')
-```
-
-## En construcción.
-Conector al endpoint del mercado de precios en tiempo real para la península ibérica de [Red Eléctrica de España](https://www.ree.es/es/apidatos). \
-Los precios para el día siguiente se suelen actualizar pasadas las 20:15 de cada día. Si el programa se ejecuta antes de las 20:30 (CET) entonces se devuelven los precios del día actual. \ \
-Contiene dos métodos:
-  - ```get_PVPC()```: devuelve los precios del mercado del precio voluntario para el pequeño consumidor.
-  - ```get_PMS()```: devuelve el precio marginal del sistema.
-
-Se pueden usar junto con ```self.date``` para recuperar el día al que corresponden los datos.
+El proyecto se compone de dos programas:
+	- Red_electrica.py recoge y procesa los datos de precios de Red Electrica de España (https://www.ree.es/es) para el día siguiente al actual.
+	- main.py es el programa que notifica dichos datos. Es un bot de Discord que envía dichos datos a dos canales personales: uno con el precio mínimo y la hora y otro con todos los datos por hora.
